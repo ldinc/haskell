@@ -15,9 +15,10 @@ module Main where
 
 main:: IO ()
 
-main = print(median [1, 1, 1, 8])
+main = print(median [1, 1, 8, 10])
 
-median x	| mod (middle x) 2 == 1 = x!!(middle x)
-			| otherwise = ((x!!(middle x) + x!!((middle x)+1)) / 2)
+median x
+	| mod (length x) 2 == 1 = x !! m
+	| otherwise = ( (x !! m) + (x !! (m - 1) ) ) * 0.5
 	where
-		middle x =  div (length x) 2
+		m = div (length x) 2
