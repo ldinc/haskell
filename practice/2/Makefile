@@ -24,6 +24,9 @@ p2:$(OBJ)
 p3:
 	$(CC) $(MODULESDIR)$(MODULES) ./3/$(TARGET) -o $(EXECUTABLE)3
 
+p4:
+	$(CC) $(MODULESDIR)$(MODULES) ./4/$(TARGET) -o $(EXECUTABLE)4
+
 clean:
 	find . -name '*.hi' -delete
 	find . -name '*.hs.*' -delete
