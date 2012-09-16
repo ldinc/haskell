@@ -24,7 +24,7 @@ p4:
 	$(CC) $(MODULES) ./4/$(TARGET) -o $(EXECUTABLE)4
 
 p5:
-	$(CC) $(MODULES) ./5/$(TARGER) -o $(EXECUTABLE)5	
+	$(CC) $(MODULES) ./5/$(TARGET) -o $(EXECUTABLE)5	
 
 
 clean:
