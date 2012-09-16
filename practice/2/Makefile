@@ -6,26 +6,26 @@ EXECUTABLE=out
 
 MODULESDIR=./Modules/
 
-MODULES=MyMath.hs
+MODULE=MyMath.hs MyAlgorithm.hs
 
-OBJSDIR=./obj/
-
-OBJS=$(MODULES:.hs=.o)
+MODULES=$(addprefix $(MODULESDIR), $(MODULE))
 
 TARGET=main.hs
 
-all:
-	$(CC) -c $(MODULESDIR)$(MODULES) 
-	mv $(MODULESDIR)$(OBJS) $(OBJSDIR)
+all:p2 p3 p4 p5
 
-p2:$(OBJ)
-	$(CC) $(MODULESDIR)$(MODULES) ./2/$(TARGET) -o $(EXECUTABLE)2
+p2:
+	$(CC) $(MODULES) ./2/$(TARGET) -o $(EXECUTABLE)2
 
 p3:
-	$(CC) $(MODULESDIR)$(MODULES) ./3/$(TARGET) -o $(EXECUTABLE)3
+	$(CC) $(MODULES) ./3/$(TARGET) -o $(EXECUTABLE)3
 
 p4:
-	$(CC) $(MODULESDIR)$(MODULES) ./4/$(TARGET) -o $(EXECUTABLE)4
+	$(CC) $(MODULES) ./4/$(TARGET) -o $(EXECUTABLE)4
+
+p5:
+	$(CC) $(MODULES) ./5/$(TARGER) -o $(EXECUTABLE)5	
+
 
 clean:
 	find . -name '*.hi' -delete
