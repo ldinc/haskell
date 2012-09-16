@@ -26,6 +26,8 @@ p4:
 p5:
 	$(CC) $(MODULES) ./5/$(TARGET) -o $(EXECUTABLE)5	
 
+p6:
+	$(CC) $(MODULES) ./6/$(TARGET) -o $(EXECUTABLE)6
 
 clean:
 	find . -name '*.hi' -delete

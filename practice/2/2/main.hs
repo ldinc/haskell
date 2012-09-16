@@ -1,6 +1,6 @@
 module Main where
 
-import MyMath (fiblist)
+import MyMath
 
 main::IO ()
 
