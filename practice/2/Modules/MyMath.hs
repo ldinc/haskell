@@ -78,7 +78,7 @@ range a b d
 	| a >= b = []
 	| otherwise = a:range (a + d) b d
 
-rangef::Double->Double->Double->[Double]
+rangef::Real a => a -> a -> a -> [a]
 
 rangef a b d
 	| a >= b = []
