@@ -12,7 +12,7 @@ MODULES=$(addprefix $(MODULESDIR), $(MODULE))
 
 TARGET=main.hs
 
-all:p2 p3 p4 p5 p6 p7 p18
+all:p2 p3 p4 p5 p6 p7 p18 p19
 
 p2:
 	$(CC) $(MODULES) ./2/$(TARGET) -o $(EXECUTABLE)2
@@ -35,6 +35,9 @@ p7:
 p18:
 	$(CC) $(MODULES) ./18/$(TARGET) -o $(EXECUTABLE)18
 
+p19:
+	$(CC) $(MODULES) ./19/$(TARGET) -o $(EXECUTABLE)19
+	$(CC) $(MODULES) ./19/main2.hs -o $(EXECUTABLE)19f
 
 clean:
 	find . -name '*.hi' -delete
