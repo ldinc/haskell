@@ -34,6 +34,51 @@ fiblist m n
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
+{- calculation of local minimum for f(x) using golden ratio -}
+-------------------------------------------------------------------------------
+--simple local minimum
+locminGR::(Ord a, Floating a) => (a -> a) -> a -> a -> a -> [a]
+
+locminGR f l r eps
+	| abs(x2 - x1) <= eps = [x, (f x)]
+	| f x1 < f x2  = locminGR f l x2 eps
+	| otherwise = locminGR f x1 r eps
+	where
+		x1 = l + (3 - (sqrt 5)) * 0.5 * (r - l)
+		x2 = l + ((sqrt 5) - 1) * 0.5 * (r - l)
+		x = (x2 + x1) * 0.5
+
+--bounded depth
+locminGRbounded::(Ord a, Floating a) => (a -> a) -> a -> a -> a -> a -> [a]
+
+locminGRbounded f l r eps n
+        | abs(x2 - x1) <= eps = [x, (f x)]
+	| n == 0 = [x, (f x)]
+        | f x1 < f x2  = locminGRbounded f l x2 eps (n - 1)
+        | otherwise = locminGRbounded f x1 r eps (n - 1)
+	where
+                x1 = l + (3 - (sqrt 5)) * 0.5 * (r - l)
+                x2 = l + ((sqrt 5) - 1) * 0.5 * (r - l)
+                x = (x2 + x1) * 0.5
+
+--for debugging maybe =)
+locminGRex::(Ord a, Floating a) => (a -> a) -> a -> a -> a ->IO ()
+
+locminGRex f l r eps
+	| abs(x2 - x1) <= eps = print "Result:" >> print [x, f(x)]
+	| f x1 < f x2 = do
+		print ([l, x2])
+		(locminGRex f l x2 eps)
+	| otherwise = do
+		print ([x1, r])
+		(locminGRex f x1 r eps)
+	where
+		x1 = l + (3 - (sqrt 5)) * 0.5 * (r - l)
+                x2 = l + ((sqrt 5) - 1) * 0.5 * (r - l)
+                x = (x2 + x1) * 0.5
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
 {- primality test -}
 -------------------------------------------------------------------------------
 primality::Integral a => a -> Bool
